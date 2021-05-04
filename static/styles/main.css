@@ -1,0 +1,50 @@
+
+tr , h1  {
+			text-align: center;
+			font-family: sans-serif;
+	
+		}
+
+		table {
+			text-align: center;
+			border-collapse: collapse;
+			border-spacing: 20px;
+			font-family: sans-serif;
+		}
+
+		th {
+			text-align: center;
+			font-family: sans-serif;
+		}
+
+
+		td {
+			height: 55px;
+			vertical-align: bottom;
+			text-align: center;
+			font-family: sans-serif;
+		}
+
+		p {
+			text-align: center;
+			font-family: sans-serif;
+		}
+
+
+    	.pointer { 
+     		cursor: pointer; /* Changes the cursor to a pointer */
+     	}
+
+     	select {
+     		overflow: visible;
+     	}
+
+
+ 
+   		 
+
+		
+
+/*###
+<link rel= "stylesheet" type="text/css" href="{{ url_for('static',filename='styles/main.css') }}">
+### */ 
