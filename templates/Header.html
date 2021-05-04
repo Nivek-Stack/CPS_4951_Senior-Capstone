@@ -1,0 +1,214 @@
+<style>
+
+ #navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: visible;
+ 
+  
+  
+}
+
+body {
+	padding-top: 70px;
+	min-width: 100%;
+}
+
+/* Style the active class, and buttons on mouse-over */
+.active , li:hover {
+  background-color: blue;
+  color: green;
+}
+
+
+
+
+
+/* The following is taken from https://www.w3schools.com/howto/howto_css_switch.asp and https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp */
+
+.switch {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.dark-mode , .active , body , .panel-body {
+  background-color: black;
+  font-family: sans-serif;
+  color: white;
+}
+.light-mode , .active , body , .panel-body {
+	background-color: white;
+	font-family: sans-serif;
+	color: black;
+}
+
+
+</style>
+
+
+<script>
+// Add active class to the current button (highlight it)
+
+let header = document.getElementById("navbar");
+let btns = header.getElementsByClassName("li");
+for (let i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  let current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+</script>
+
+<script>
+
+let checked = JSON.parse(localStorage.getItem("status"));  // Gets status of LocalStorage.
+let element = document.body;
+
+function darkMode() { // Functions is for initially clicking the switch the first time.
+   
+   let check = document.getElementById("status").checked; // .checked sees if the checkbox is checked or unchecked.
+   
+   if(check === null) {  // If not checked.  Should be null and NOT False.
+   	element.classList.toggle("light-mode"); // Turn on light-Mode from the CSS.
+
+   } else {
+   	element.classList.toggle("dark-mode"); // Turns on Dark-Mode from the CSS.
+   }
+} 
+
+function save() { // Saves when the toggle switch is clicked.
+
+	let checkbox = document.getElementById("status");
+	localStorage.setItem("status", checkbox.checked); // Sets LocalStorage to either checked or unchecked.
+}
+
+
+function load() { // Called when the page is loaded, on the head attribute.  Function checks the status of the switch.
+
+    thing = document.getElementById("status").checked = checked;
+
+    if(thing === null) {
+    	element.classList.toggle("light-mode");
+    } else if(thing === true) {
+    	element.classList.toggle("dark-mode");
+    }
+}
+
+</script>
+
+<html>
+
+<head>
+	<body onload="load()">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<div id="navbar">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</head>
+
+ <a class="navbar-brand" href="/home"><b>Mom-n-Pop Shops of NJ</b></a>
+  <div class="collapse-navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+    	<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle mx-2" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><b>Stores</b></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item {% block nav_videogames %}{% endblock %}" href="videogames"><b>Video Games</b></a>
+          <a class="dropdown-item {% block nav_crystals %}{% endblock %}" href="crystals"><b>Crystals</b></a>
+          <a class="dropdown-item {% block nav_records %}{% endblock %}" href="records"><b>Records</b></a>
+          <a class="dropdown-item {% block nav_comics %}{% endblock %}" href="comic-books"><b>Comic Books</b></a>
+          <a class="dropdown-item {% block nav_antiques %}{% endblock %}" href="antiques"><b>Antiques</b></a>
+          <a class="dropdown-item {% block nav_books %}{% endblock %}" href="books"><b>Books</b></a>
+        </div>
+      </li>
+
+      <!-- <li class="nav-item">
+        <a class="nav-link" href=""><b>About the Website</b></a>     Thought about making an About he Website page.
+        <li class="nav-item">
+        <a class="nav-link" href=""><b>About Us</b></a>   Thought about making an About Us Page.   -->
+      <li class="nav-item">
+        <a class="nav-link" href="/submit"><b>Submit</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login"><b>Admin Login</b></a>
+      </li>
+      
+    </ul>
+
+  </div>
+  		<label class="switch">
+  			<input type="checkbox" id="status" onclick="save(); darkMode();">
+  			<span class="slider round"></span>
+		</label>	
+	</div>
+
+
+</nav>
+</body>
+</html>
+
+

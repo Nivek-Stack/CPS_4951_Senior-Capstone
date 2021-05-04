@@ -1,0 +1,121 @@
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+ font-family: sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 15%;
+  padding: 10px;
+  
+}
+/* Remove extra left and right margins, due to padding */
+.row {
+	margin: 0 -5px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+
+}
+
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+
+}
+
+</style>
+
+<html>
+
+<head>
+	<title>Home</title>
+</head>
+
+<body>
+
+<h1><center>Overview</center></h1>
+
+<br>
+	<p>During the COVID-19 Pandemic, many small brick and mortar stores have closed their doors forever.  This website was created to show tourists, and local residents of the State of New Jersey some better alternatives to other bigger box stores.</p>
+	   <br>
+	   <center><h1> Team Python </h1></center><br>
+<p> This website was created for the CPS 4951 Senior Capstone Class at Kean University.  The website was made using the <a href="https://palletsprojects.com/p/flask/">Flask</a> Library in Python.  The main reason we selected Flask, is because it allows us to insert special blocks of code into HTML, allowing us to use Python alongside HTML.  We also used Python, JavaScript, CSS, HTML, and MySQL.  The two creators of this website were Kevin Asaro and Omar Hewedy.  Omar was Front End, while Kevin was Back End.  </p> 
+<br>
+
+<h1><center> Quick Links to Different Stores </center></h1>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <h3><b><a href="videogames">Video Games</a></b></h3>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <h3><b><a href="crystals">Crystals</a></b></h3>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h3><b><a href="records">Records</a></b></h3>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <h3><b><a href="comic-books">Comic Books</a></b></h3>
+    </div>
+  </div>
+  
+   <div class="column">
+    <div class="card">
+      <h3><b><a href="antiques">Antiques</a></b></h3>
+    </div>
+  </div>
+  
+   <div class="column">
+    <div class="card">
+      <h3><b><a href="books">Books</a></b></h3>
+    </div>
+  </div>
+</div>
+<br><br>
+
+</body>
+</html>
+
+
+
+
+{% extends "Header.html" %} <!-- This is so the navbar is on the current page. -->
+{% block nav_home %}active{% endblock %} <!-- Navbar says we are on this current page. -->
+{% block content %}
+    
+{% endblock %}
+
